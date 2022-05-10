@@ -6,12 +6,10 @@ import { UserContext } from "../../context/User.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 const Navigation = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const signOutHandler = async () => {
     await signOutUser();
-
-    setCurrentUser(null);
   };
 
   return (
@@ -21,7 +19,7 @@ const Navigation = () => {
           <CrwnLogo className="logo" />
         </Link>
         <div className="nav-links-container ">
-          <Link className="nav-link" to="/">
+          <Link className="nav-link" to="/shop">
             SHOP
           </Link>
           <Link className="nav-link" to="/">
