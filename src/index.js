@@ -1,18 +1,27 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "./index.scss";
-import App from "./App";
+import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { UserProvider } from "./context/User.context";
-import { ProductsContext } from "./context/products.context";
 
-ReactDOM.render(
+import App from "./App";
+import { UserProvider } from "./context/User.context";
+import { ProductsProvider } from "./context/products.context";
+import { CartProvider } from "./context/cart.context";
+
+import "./index.scss";
+
+const rootElement = document.getElementById("root");
+
+render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <ProductsProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </ProductsProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root")
+  rootElement
 );
